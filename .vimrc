@@ -107,6 +107,7 @@ let Tlist_Ctags_Cmd='/usr/bin/ctags' "设置ctags命令的位置
 let Tlist_Auto_Open = 0 "每次vim运行时自动打开taglist
 nnoremap <leader>tl : Tlist<CR> 
 "}
+set tags+=/home/acayf/Documents/taobao/Nginx/nginx-1.4.1/src/tags
 "set tags=./tags;,/home/plc/ti-dvsdk_dm365-evm_4_02_00_06/psp/linux-2.6.32.17-psp03.01.01.39/tags
 "set tags+=./tags;,/home/plc/ti-dvsdk_dm365-evm_4_02_00_06/dmai_2_20_00_15/tags
 "set tags+=./tags;,/home/plc/opt/arm-2009q1/arm-none-linux-gnueabi/tags
@@ -115,8 +116,8 @@ nnoremap <leader>tl : Tlist<CR>
 "set tags+=~/workdir/lsp/ti-davinci/linux-2.6.18_pro500_plc/linux-2.6.18_pro500/tags
 "set tags+=./tags;,~/workdir/dm365/dvsdk_2_10_01_18/dmai_1_21_00_10/tags
 "set tags+=./tags;,~/workdir/dm365/dvsdk_2_10_01_18/dvsdk_demos_2_10_00_17/tags
-set tags+=~/dvsdk_2_10_01_18/dmai_1_21_00_10/tags
-set tags+=~/dvsdk_2_10_01_18/dvsdk_demos_2_10_00_17/tags
+"set tags+=~/dvsdk_2_10_01_18/dmai_1_21_00_10/tags
+"set tags+=~/dvsdk_2_10_01_18/dvsdk_demos_2_10_00_17/tags
 "set tags+=~/workdir/dm365/dvsdk_2_10_01_18/qt/qt-everywhere-opensource-src-4.6.2/examples/tags
 "set tags+=~/workdir/dm365/dvsdk_2_10_01_18/qt/qt-everywhere-opensource-src-4.6.2/include/tags
 "}
@@ -148,7 +149,7 @@ let g:gitgutter_enabled = 0
 "        exe "cs add " . db . " " . path
 "        set cscopeverbose
 "    endif
-"
+
 "    " add any cscope database in current directory
 "    if filereadable("cscope.out")
 "        cs add cscope.out  
@@ -169,11 +170,12 @@ let g:gitgutter_enabled = 0
     "cs add ~/workdir/lsp/ti-davinci/sjw/linux-2.6.18_pro500/cscope.out ~/workdir/lsp/ti-davinci/sjw/linux-2.6.18_pro500/
     "cs add ~/workdir/dm365/dvsdk_2_10_01_18/dmai_1_21_00_10/cscope.out ~/workdir/dm365/dvsdk_2_10_01_18/dmai_1_21_00_10/
     "cs add ~/workdir/dm365/dvsdk_2_10_01_18/dvsdk_demos_2_10_00_17/cscope.out ~/workdir/dm365/dvsdk_2_10_01_18/dvsdk_demos_2_10_00_17/
-    cs add ~/dvsdk_2_10_01_18/dmai_1_21_00_10/cscope.out ~/dvsdk_2_10_01_18/dmai_1_21_00_10/
-    cs add ~/dvsdk_2_10_01_18/dvsdk_demos_2_10_00_17/cscope.out ~/dvsdk_2_10_01_18/dvsdk_demos_2_10_00_17/
+    "cs add ~/dvsdk_2_10_01_18/dmai_1_21_00_10/cscope.out ~/dvsdk_2_10_01_18/dmai_1_21_00_10/
+    "cs add ~/dvsdk_2_10_01_18/dvsdk_demos_2_10_00_17/cscope.out ~/dvsdk_2_10_01_18/dvsdk_demos_2_10_00_17/
     "cs add ~/workdir/lsp/ti-davinci/linux-2.6.18_pro500_plc/linux-2.6.18_pro500/cscope.out ~/workdir/lsp/ti-davinci/linux-2.6.18_pro500_plc/linux-2.6.18_pro500/
     "cs add ~/workdir/dm365/dvsdk_2_10_01_18/qt/qt-everywhere-opensource-src-4.6.2/examples/cscope.out ~/workdir/dm365/dvsdk_2_10_01_18/qt/qt-everywhere-opensource-src-4.6.2/examples/
     "cs add ~/workdir/dm365/dvsdk_2_10_01_18/qt/qt-everywhere-opensource-src-4.6.2/include/cscope.out ~/workdir/dm365/dvsdk_2_10_01_18/qt/qt-everywhere-opensource-src-4.6.2/include/
+    cs add /home/acayf/Documents/taobao/Nginx/nginx-1.4.1/src/cscope.out /home/acayf/Documents/taobao/Nginx/nginx-1.4.1/src/
 
 
     """"""""""""" My cscope/vim key mappings
