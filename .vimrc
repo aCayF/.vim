@@ -1,8 +1,6 @@
 syn on "语法支持
 
 "common conf {{ 通用配置
-set ai "自动缩进
-set bs=2 "在insert模式下用退格键删除
 set laststatus=2 "总是显示状态行
 set shiftwidth=4
 set tabstop=4
@@ -27,8 +25,6 @@ set backspace=indent,eol,start
 set laststatus=2
 hi Search term=standout ctermbg=11 
 
-nnoremap / /\v
-vnoremap / /\v
 set ignorecase "搜索小写正文时大小写不敏感，搜索正文包含大写时大小写敏感
 set smartcase
 "set gdefault
@@ -287,8 +283,3 @@ let g:gitgutter_enabled = 0
     " connection, set it higher.  If you don't set ttimeoutlen, the value for
     " timeoutlent (default: 1000 = 1 second, which is sluggish) is used.
     "
-    "set ttimeoutlen=100
-
-"}
-
-"}}
