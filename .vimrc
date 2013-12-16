@@ -93,14 +93,12 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
 "}}
 
-"conf for plugins {{ 插件相关的配置
+"conf for plugins {{
 
-"pathogen是Vim用来管理插件的插件
 "pathogen{
 call pathogen#infect()
 "}
 
-"状态栏的配置 
 "powerline{
 set guifont=PowerlineSymbols\ for\ Powerline
 set nocompatible
@@ -108,40 +106,35 @@ set t_Co=256
 let g:Powerline_symbols = 'fancy'
 "}
 
-"taglist{ 
-let Tlist_Show_One_File = 1 "只显示当前文件的taglist，默认是显示多个
-let Tlist_Exit_OnlyWindow = 1 "如果taglist是最后一个窗口，则退出vim
-let Tlist_Use_Right_Window = 1 "在右侧窗口中显示taglist
-let Tlist_GainFocus_On_ToggleOpen = 1 "打开taglist时，光标保留在taglist窗口
-let Tlist_Ctags_Cmd='/usr/bin/ctags' "设置ctags命令的位置
-let Tlist_Auto_Open = 0 "每次vim运行时自动打开taglist
-nnoremap <leader>tl : Tlist<CR> 
-"}
-set tags+=/home/acayf/Documents/taobao/Nginx/nginx-1.4.1/src/tags
-"set tags=./tags;,/home/plc/ti-dvsdk_dm365-evm_4_02_00_06/psp/linux-2.6.32.17-psp03.01.01.39/tags
-"set tags+=./tags;,/home/plc/ti-dvsdk_dm365-evm_4_02_00_06/dmai_2_20_00_15/tags
-"set tags+=./tags;,/home/plc/opt/arm-2009q1/arm-none-linux-gnueabi/tags
-"set tags=./tags;,~/workdir/dm365/mv_pro_5.0/tags
-"set tags+=./tags;,~/workdir/lsp/ti-davinci/sjw/linux-2.6.18_pro500/tags
-"set tags+=~/workdir/lsp/ti-davinci/linux-2.6.18_pro500_plc/linux-2.6.18_pro500/tags
-"set tags+=./tags;,~/workdir/dm365/dvsdk_2_10_01_18/dmai_1_21_00_10/tags
-"set tags+=./tags;,~/workdir/dm365/dvsdk_2_10_01_18/dvsdk_demos_2_10_00_17/tags
-"set tags+=~/dvsdk_2_10_01_18/dmai_1_21_00_10/tags
-"set tags+=~/dvsdk_2_10_01_18/dvsdk_demos_2_10_00_17/tags
-"set tags+=~/workdir/dm365/dvsdk_2_10_01_18/qt/qt-everywhere-opensource-src-4.6.2/examples/tags
-"set tags+=~/workdir/dm365/dvsdk_2_10_01_18/qt/qt-everywhere-opensource-src-4.6.2/include/tags
+"nerdtree{
+nnoremap <leader>nr :silent! NERDTreeToggle<CR>
+let NERDTreeIgnore = ['.*\.o$','.*\.ko$']
 "}
 
-" vimdiff color scheme
+"taglist{
+nnoremap <leader>tl : Tlist<CR>
+let Tlist_Show_One_File = 1           "只显示当前文件的taglist，默认是显示多个
+let Tlist_Exit_OnlyWindow = 1         "如果taglist是最后一个窗口，则退出vim
+let Tlist_Use_Right_Window = 1        "在右侧窗口中显示taglist
+let Tlist_GainFocus_On_ToggleOpen = 0 "打开taglist时，光标不保留在taglist窗口
+let Tlist_Ctags_Cmd='/usr/bin/ctags'  "设置ctags命令的位置
+let Tlist_Auto_Open = 0               "每次vim运行时不自动打开taglist
+set tags+=/home/acayf/Documents/taobao/Nginx/nginx-1.4.1/src/tags
+set tags+=/home/acayf/Documents/test/linux-2.6.18_pro500/tags
+"}
+
+" vimdiff color scheme {
 highlight DiffChange cterm=none ctermfg=black ctermbg=LightGreen gui=none guifg=bg guibg=LightGreen
 highlight DiffText cterm=none ctermfg=black ctermbg=Red gui=none guifg=bg guibg=Red
+"}
 
-" Git Gutter
+" Git Gutter {
 nnoremap <leader>ggt :GitGutterToggle<cr>
 let g:gitgutter_enabled = 0
+"}
 
 "cscope{
- 
+
     """"""""""""" Standard cscope/vim boilerplate
 
     " use both cscope and ctag for 'ctrl-]', ':ta', and 'vim -t'
@@ -162,14 +155,14 @@ let g:gitgutter_enabled = 0
 
 "    " add any cscope database in current directory
 "    if filereadable("cscope.out")
-"        cs add cscope.out  
-"    " else add the database pointed to by environment variable 
+"        cs add cscope.out
+"    " else add the database pointed to by environment variable
 "    elseif $CSCOPE_DB != ""
 "        cs add $CSCOPE_DB
 "    endif
 
     " show msg when any other cscope db added
-    "set cscopeverbose 
+    "set cscopeverbose
 
    " add user defined cscope db
     "cs add ~/opt/arm-2009q1/cscope.out ~/opt/arm-2009q1/
@@ -186,6 +179,7 @@ let g:gitgutter_enabled = 0
     "cs add ~/workdir/dm365/dvsdk_2_10_01_18/qt/qt-everywhere-opensource-src-4.6.2/examples/cscope.out ~/workdir/dm365/dvsdk_2_10_01_18/qt/qt-everywhere-opensource-src-4.6.2/examples/
     "cs add ~/workdir/dm365/dvsdk_2_10_01_18/qt/qt-everywhere-opensource-src-4.6.2/include/cscope.out ~/workdir/dm365/dvsdk_2_10_01_18/qt/qt-everywhere-opensource-src-4.6.2/include/
     cs add /home/acayf/Documents/taobao/Nginx/nginx-1.4.1/src/cscope.out /home/acayf/Documents/taobao/Nginx/nginx-1.4.1/src/
+    cs add /home/acayf/Documents/test/linux-2.6.18_pro500/cscope.out /home/acayf/Documents/test/linux-2.6.18_pro500/
 
 
     """"""""""""" My cscope/vim key mappings
@@ -224,17 +218,17 @@ let g:gitgutter_enabled = 0
     " To do the first type of search, hit 'CTRL-\', followed by one of the
     " cscope search types above (s,g,c,t,e,f,i,d).  The result of your cscope
     " search will be displayed in the current window.  You can use CTRL-T to
-    " go back to where you were before the search.  
+    " go back to where you were before the search.
     "
 
-    nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>	
-    nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>	
-    nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>	
-    nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>	
-    nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>	
-    nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>	
+    nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
     nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-    nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>	
+    nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
 
     " Using 'CTRL-spacebar' (intepreted as CTRL-@ by vim) then a search type
@@ -243,19 +237,19 @@ let g:gitgutter_enabled = 0
     "
     " (Note: earlier versions of vim may not have the :scs command, but it
     " can be simulated roughly via:
-    "    nmap <C-@>s <C-W><C-S> :cs find s <C-R>=expand("<cword>")<CR><CR>	
+    "    nmap <C-@>s <C-W><C-S> :cs find s <C-R>=expand("<cword>")<CR><CR>
 
-    nmap <C-@>s :scs find s <C-R>=expand("<cword>")<CR><CR>	
-    nmap <C-@>g :scs find g <C-R>=expand("<cword>")<CR><CR>	
-    nmap <C-@>c :scs find c <C-R>=expand("<cword>")<CR><CR>	
-    nmap <C-@>t :scs find t <C-R>=expand("<cword>")<CR><CR>	
-    nmap <C-@>e :scs find e <C-R>=expand("<cword>")<CR><CR>	
-    nmap <C-@>f :scs find f <C-R>=expand("<cfile>")<CR><CR>	
-    nmap <C-@>i :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>	
-    nmap <C-@>d :scs find d <C-R>=expand("<cword>")<CR><CR>	
+    nmap <C-@>s :scs find s <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@>g :scs find g <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@>c :scs find c <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@>t :scs find t <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@>e :scs find e <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
+    nmap <C-@>i :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+    nmap <C-@>d :scs find d <C-R>=expand("<cword>")<CR><CR>
 
 
-    " Hitting CTRL-space *twice* before the search type does a vertical 
+    " Hitting CTRL-space *twice* before the search type does a vertical
     " split instead of a horizontal one (vim 6 and up only)
     "
     " (Note: you may wish to put a 'set splitright' in your .vimrc
@@ -266,8 +260,8 @@ let g:gitgutter_enabled = 0
     nmap <C-@><C-@>c :vert scs find c <C-R>=expand("<cword>")<CR><CR>
     nmap <C-@><C-@>t :vert scs find t <C-R>=expand("<cword>")<CR><CR>
     nmap <C-@><C-@>e :vert scs find e <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-@><C-@>f :vert scs find f <C-R>=expand("<cfile>")<CR><CR>	
-    nmap <C-@><C-@>i :vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>	
+    nmap <C-@><C-@>f :vert scs find f <C-R>=expand("<cfile>")<CR><CR>
+    nmap <C-@><C-@>i :vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
     nmap <C-@><C-@>d :vert scs find d <C-R>=expand("<cword>")<CR><CR>
 
 
@@ -277,7 +271,7 @@ let g:gitgutter_enabled = 0
     " You may find that too short with the above typemaps.  If so, you should
     " either turn off mapping timeouts via 'notimeout'.
     "
-    "set notimeout 
+    "set notimeout
     "
     " Or, you can keep timeouts, by uncommenting the timeoutlen line below,
     " with your own personal favorite value (in milliseconds):
@@ -290,10 +284,15 @@ let g:gitgutter_enabled = 0
     " delays as vim waits for a keystroke after you hit ESC (it will be
     " waiting to see if the ESC is actually part of a key code like <F1>).
     "
-    "set ttimeout 
+    "set ttimeout
     "
     " personally, I find a tenth of a second to work well for key code
     " timeouts. If you experience problems and have a slow terminal or network
     " connection, set it higher.  If you don't set ttimeoutlen, the value for
     " timeoutlent (default: 1000 = 1 second, which is sluggish) is used.
     "
+    "set ttimeoutlen=100
+
+"}
+
+"}}
