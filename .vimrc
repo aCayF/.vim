@@ -59,42 +59,39 @@ set nowrap
 
 "}}
 
-"Easy navigation{
-inoremap jj <ESC>
+"Remap {{
 
 nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
 nnoremap <right> <nop>
-"inoremap <up> <nop>
-"inoremap <down> <nop>
-"inoremap <left> <nop>
-"inoremap <right> <nop>
+
+inoremap jj <ESC>
+
+nnoremap / /\v
+vnoremap / /\v
 
 nnoremap j gj
 nnoremap k gk
 
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-
-inoremap <F1> <ESC>
-nnoremap <F1> <ESC>
-vnoremap <F1> <ESC>
 nnoremap ; :
 
-au FocusLost * :wa "saving on losing focus
-"}
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
 
-"用户自定义快捷键{
+au FocusLost * :wa "saving on losing focus
+
+"}}
+
+"User definded shotcut{{
+
 let mapleader = ','
-nnoremap <leader><space> :noh<cr> 
+nnoremap <leader><space> :noh<cr>
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
-"nnoremap <C-l> gt
-"nnoremap <C-h> gT
-"nnoremap <leader>t : tabe<CR>
-"}
+
+"}}
 
 "conf for plugins {{ 插件相关的配置
 
