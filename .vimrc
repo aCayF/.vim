@@ -1,45 +1,62 @@
-syn on "语法支持
+syn on             "To switch syntax highlighting on according to the current
+                   "value of the 'filetype' option
 
-"common conf {{ 通用配置
-set laststatus=2 "总是显示状态行
-set shiftwidth=4
-set tabstop=4
-set softtabstop=4
-set expandtab "以下三个配置配合使用，设置tab和缩进空格数
-set cursorline "为光标所在行加下划线
-"set number "显示行号
-set nonumber "不显示行号
-set autoread "文件在Vim之外修改过，自动重新读入
-set scrolloff=3
+"common conf {{
+
 set autoindent
+set laststatus=2   "status line always shows up
+set expandtab      "When expandtab is set, hitting Tab in insert mode will
+                   "produce the appropriate number of spaces.
+set softtabstop=4  "Set softtabstop to control how many columns vim
+                   "uses when you hit Tab in insert mode
+set shiftwidth=4   "Set shiftwidth to control how many columns text
+                   "is indented with the reindent operations (<< and >>)
+                   "and automatic C-style indentation.
+set tabstop=4      "Set tabstop to tell vim how many columns a tab counts
+                   "for. This is the only command here that will affect
+                   "how existing text displays.
+set cursorline     "Highlight the screen line of the cursor with CursorLine
+"set number        "Print the line number in front of each line
+set nonumber
+set autoread       "When a file has been detected to have been changed
+                   "outside of Vim and it has not been changed inside of Vim,
+                   "automatically read it again.
+set scrolloff=3    "Minimal number of screen lines to keep above and below the cursor.
 set showmode
 set showcmd
 set hidden
+"code complete {
 set wildmenu
 set wildmode=list:longest
-set visualbell
-set cursorline
+"}
+set visualbell     "Use visual bell instead of beeping
 set ttyfast
-set ruler
-set backspace=indent,eol,start
-set laststatus=2
-hi Search term=standout ctermbg=11 
+set ruler          "Show the line and column number of the cursor position,
+                   "separated by a comma.
+set backspace=indent,eol,start "Backspace over something
+hi Search term=standout ctermbg=11
 
-set ignorecase "搜索小写正文时大小写不敏感，搜索正文包含大写时大小写敏感
-set smartcase
-"set gdefault
-set incsearch "高亮搜索文本
-set showmatch
+set ignorecase     "Ignore case in search patterns.  Also used when
+                   "searching in the tags file.
+set smartcase      "Override the 'ignorecase' option if the search
+                   "pattern contains upper case characters.
+set incsearch      "While typing a search command, show where the pattern,
+                   "as it was typed so far, matches. The matched
+                   "string is highlighted.
 set hlsearch
+set showmatch      "The showmatch option is also useful: it can reduce
+                   "the need for %, the cursor will briefly jump to
+                   "the matching brace when you insert one.
 
-set fileencodings=uft-8,gbk "使用utf-8或gbk打开文件
-set helplang=cn "帮助系统设置为中文
-set foldmethod=syntax "代码折叠
+set encoding=utf-8
+set fileencodings=uft-8,gbk "Sets the character encoding for the file of this buffer
+set foldmethod=syntax "yntax highlighting items specify folds
 
-" set wrap "换行设置
-set nowrap "不换行设置
-" set textwidth=79
-set formatoptions=qrn1
+"set wrap          "This option changes how text is displayed
+set nowrap
+"set textwidth=79 "'textwidth' is set to 0 when the 'paste' option is set.
+"set formatoptions=qrn1 "When the 'paste' option is on, no formatting is done
+
 "}}
 
 "Easy navigation{
