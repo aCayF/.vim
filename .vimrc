@@ -133,6 +133,10 @@ nnoremap <leader>ggt :GitGutterToggle<cr>
 let g:gitgutter_enabled = 0
 "}
 
+" ctrlp {
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+"}
+
 "cscope{
 
     """"""""""""" Standard cscope/vim boilerplate
