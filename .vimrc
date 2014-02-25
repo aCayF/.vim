@@ -56,6 +56,7 @@ set foldmethod=syntax "yntax highlighting items specify folds
 set nowrap
 "set textwidth=79 "'textwidth' is set to 0 when the 'paste' option is set.
 "set formatoptions=qrn1 "When the 'paste' option is on, no formatting is done
+set pastetoggle=<C-t>
 
 "}}
 
