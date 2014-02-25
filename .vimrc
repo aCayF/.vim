@@ -49,7 +49,7 @@ set showmatch      "The showmatch option is also useful: it can reduce
                    "the matching brace when you insert one.
 
 set encoding=utf-8
-set fileencodings=uft-8,gbk "Sets the character encoding for the file of this buffer
+set fileencodings=uft-8 "Sets the character encoding for the file of this buffer
 set foldmethod=syntax "yntax highlighting items specify folds
 
 "set wrap          "This option changes how text is displayed
