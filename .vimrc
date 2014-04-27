@@ -120,8 +120,7 @@ let Tlist_Use_Right_Window = 1        "在右侧窗口中显示taglist
 let Tlist_GainFocus_On_ToggleOpen = 0 "打开taglist时，光标不保留在taglist窗口
 let Tlist_Ctags_Cmd='/usr/bin/ctags'  "设置ctags命令的位置
 let Tlist_Auto_Open = 0               "每次vim运行时不自动打开taglist
-set tags+=/home/acayf/Documents/taobao/Nginx/nginx-1.4.1/src/tags
-set tags+=/home/acayf/Documents/test/linux-2.6.18_pro500/tags
+"set tags+=/home/acayf/Documents/taobao/Nginx/nginx-1.4.1/src/tags
 "}
 
 " vimdiff color scheme {
@@ -170,21 +169,7 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
     "set cscopeverbose
 
    " add user defined cscope db
-    "cs add ~/opt/arm-2009q1/cscope.out ~/opt/arm-2009q1/
-    "cs add ~/ti-dvsdk_dm365-evm_4_02_00_06/dmai_2_20_00_15/cscope.out ~/ti-dvsdk_dm365-evm_4_02_00_06/dmai_2_20_00_15/
-    "cs add ~/ti-dvsdk_dm365-evm_4_02_00_06/dvsdk-demos_4_02_00_01/cscope.out ~/ti-dvsdk_dm365-evm_4_02_00_06/dvsdk-demos_4_02_00_01/
-    "cs add ~/ti-dvsdk_dm365-evm_4_02_00_06/psp/linux-2.6.32.17-psp03.01.01.39/cscope.out ~/ti-dvsdk_dm365-evm_4_02_00_06/psp/linux-2.6.32.17-psp03.01.01.39/
-    "cs add ~/workdir/dm365/mv_pro_5.0/cscope.out ~/workdir/dm365/mv_pro_5.0/
-    "cs add ~/workdir/lsp/ti-davinci/sjw/linux-2.6.18_pro500/cscope.out ~/workdir/lsp/ti-davinci/sjw/linux-2.6.18_pro500/
-    "cs add ~/workdir/dm365/dvsdk_2_10_01_18/dmai_1_21_00_10/cscope.out ~/workdir/dm365/dvsdk_2_10_01_18/dmai_1_21_00_10/
-    "cs add ~/workdir/dm365/dvsdk_2_10_01_18/dvsdk_demos_2_10_00_17/cscope.out ~/workdir/dm365/dvsdk_2_10_01_18/dvsdk_demos_2_10_00_17/
-    "cs add ~/dvsdk_2_10_01_18/dmai_1_21_00_10/cscope.out ~/dvsdk_2_10_01_18/dmai_1_21_00_10/
-    "cs add ~/dvsdk_2_10_01_18/dvsdk_demos_2_10_00_17/cscope.out ~/dvsdk_2_10_01_18/dvsdk_demos_2_10_00_17/
-    "cs add ~/workdir/lsp/ti-davinci/linux-2.6.18_pro500_plc/linux-2.6.18_pro500/cscope.out ~/workdir/lsp/ti-davinci/linux-2.6.18_pro500_plc/linux-2.6.18_pro500/
-    "cs add ~/workdir/dm365/dvsdk_2_10_01_18/qt/qt-everywhere-opensource-src-4.6.2/examples/cscope.out ~/workdir/dm365/dvsdk_2_10_01_18/qt/qt-everywhere-opensource-src-4.6.2/examples/
-    "cs add ~/workdir/dm365/dvsdk_2_10_01_18/qt/qt-everywhere-opensource-src-4.6.2/include/cscope.out ~/workdir/dm365/dvsdk_2_10_01_18/qt/qt-everywhere-opensource-src-4.6.2/include/
-    cs add /home/acayf/Documents/taobao/Nginx/nginx-1.4.1/src/cscope.out /home/acayf/Documents/taobao/Nginx/nginx-1.4.1/src/
-    cs add /home/acayf/Documents/test/linux-2.6.18_pro500/cscope.out /home/acayf/Documents/test/linux-2.6.18_pro500/
+    "cs add /home/acayf/Documents/taobao/Nginx/nginx-1.4.1/src/cscope.out /home/acayf/Documents/taobao/Nginx/nginx-1.4.1/src/
 
 
     """"""""""""" My cscope/vim key mappings
