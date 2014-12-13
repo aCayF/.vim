@@ -1,20 +1,25 @@
 syn on             "To switch syntax highlighting on according to the current
                    "value of the 'filetype' option
+filetype plugin on
 
 "common conf {{
 
-set autoindent
+set autoindent     "Copy indent from current line when starting a new line
 set laststatus=2   "status line always shows up
-set expandtab      "When expandtab is set, hitting Tab in insert mode will
-                   "produce the appropriate number of spaces.
-set softtabstop=4  "Set softtabstop to control how many columns vim
-                   "uses when you hit Tab in insert mode
-set shiftwidth=4   "Set shiftwidth to control how many columns text
-                   "is indented with the reindent operations (<< and >>)
-                   "and automatic C-style indentation.
-set tabstop=4      "Set tabstop to tell vim how many columns a tab counts
-                   "for. This is the only command here that will affect
-                   "how existing text displays.
+
+    "tab conf {
+    set expandtab      "When expandtab is set, hitting Tab in insert mode will
+                       "produce the appropriate number of spaces.
+    set softtabstop=4  "Set softtabstop to control how many columns vim
+                       "uses when you hit Tab in insert mode
+    set shiftwidth=4   "Set shiftwidth to control how many columns text
+                       "is indented with the reindent operations (<< and >>)
+                       "and automatic C-style indentation.
+    set tabstop=4      "Set tabstop to tell vim how many columns a tab counts
+                       "for. This is the only command here that will affect
+                       "how existing text displays.
+    "}
+
 set cursorline     "Highlight the screen line of the cursor with CursorLine
 "set number        "Print the line number in front of each line
 set nonumber
@@ -22,13 +27,15 @@ set autoread       "When a file has been detected to have been changed
                    "outside of Vim and it has not been changed inside of Vim,
                    "automatically read it again.
 set scrolloff=3    "Minimal number of screen lines to keep above and below the cursor.
-set showmode
-set showcmd
+set showmode       "Show the mode message on the last line
+set showcmd        "Show (partial) command in the last line of the screen
 set hidden
-"code complete {
-set wildmenu
-set wildmode=list:longest
-"}
+
+    "code complete {
+    set wildmenu
+    set wildmode=list:longest
+    "}
+
 set visualbell     "Use visual bell instead of beeping
 set ttyfast
 set ruler          "Show the line and column number of the cursor position,
@@ -36,27 +43,27 @@ set ruler          "Show the line and column number of the cursor position,
 set backspace=indent,eol,start "Backspace over something
 hi Search term=standout ctermbg=11
 
-set ignorecase     "Ignore case in search patterns.  Also used when
-                   "searching in the tags file.
-set smartcase      "Override the 'ignorecase' option if the search
-                   "pattern contains upper case characters.
-set incsearch      "While typing a search command, show where the pattern,
-                   "as it was typed so far, matches. The matched
-                   "string is highlighted.
-set hlsearch
-set showmatch      "The showmatch option is also useful: it can reduce
-                   "the need for %, the cursor will briefly jump to
-                   "the matching brace when you insert one.
-
+    "search conf {
+    set ignorecase     "Ignore case in search patterns.  Also used when
+                       "searching in the tags file.
+    set smartcase      "Override the 'ignorecase' option if the search
+                       "pattern contains upper case characters.
+    set incsearch      "While typing a search command, show where the pattern,
+                       "as it was typed so far, matches. The matched
+                       "string is highlighted.
+    set hlsearch       "When there is a previous search pattern, highlight all its matches.
+    set showmatch      "The showmatch option is also useful: it can reduce
+                       "the need for %, the cursor will briefly jump to
+                       "the matching brace when you insert one.
+    "}
 set encoding=utf-8
 set fileencodings=uft-8 "Sets the character encoding for the file of this buffer
-set foldmethod=syntax "yntax highlighting items specify folds
+set foldmethod=syntax "Syntax highlighting items specify folds
 
 "set wrap          "This option changes how text is displayed
 set nowrap
 "set textwidth=79 "'textwidth' is set to 0 when the 'paste' option is set.
 "set formatoptions=qrn1 "When the 'paste' option is on, no formatting is done
-set pastetoggle=<C-t>
 
 "}}
 
@@ -91,6 +98,7 @@ au FocusLost * :wa "saving on losing focus
 let mapleader = ','
 nnoremap <leader><space> :noh<cr>
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+set pastetoggle=<leader>T
 
 "}}
 
@@ -121,6 +129,9 @@ let Tlist_GainFocus_On_ToggleOpen = 0 "打开taglist时，光标不保留在tagl
 let Tlist_Ctags_Cmd='/usr/bin/ctags'  "设置ctags命令的位置
 let Tlist_Auto_Open = 0               "每次vim运行时不自动打开taglist
 "set tags+=/home/acayf/Documents/taobao/Nginx/nginx-1.4.1/src/tags
+"set tags+=/home/acayf/Documents/test/linux-2.6.18_pro500/tags
+"set tags+=/home/acayf/Documents/DM365/backup/encode/tags
+"set tags+=/home/acayf/Documents/DM365/backup/dmai_1_21_00_10/packages/ti/sdo/dmai/tags
 "}
 
 " vimdiff color scheme {
@@ -137,6 +148,96 @@ let g:gitgutter_enabled = 0
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 "}
 
+" vim-colors-solarized {
+syntax enable
+set background=dark
+colorscheme solarized
+call togglebg#map("<F5>")
+"}
+
+" Conque-Shell {
+nnoremap <leader>b :ConqueTermSplit bash<cr>
+let g:ConqueTerm_StartMessages = 0
+function MyConqueStartup(term)
+
+    " set buffer syntax using the name of the program currently running
+    execute 'setlocal syntax=' . a:term.program_name
+
+    " shrink window height to 10 rows
+    resize 5
+
+    " silly example of terminal api usage
+    " if a:term.program_name == 'bash'
+    "    call a:term.writeln('gcc ')
+    " endif
+    
+endfunction
+
+call conque_term#register_function('after_startup', 'MyConqueStartup')
+"}
+
+" YCM {
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+" "}
+
+" UltiSnips {
+" related issue
+" https://github.com/Valloric/YouCompleteMe/issues/36#issuecomment-15451411
+  let g:UltiSnipsExpandTrigger       = "<c-tab>"
+  let g:UltiSnipsJumpForwardTrigger  = "<tab>"
+  let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+  
+  " Enable tabbing through list of results
+  function! g:UltiSnips_Complete()
+      call UltiSnips#ExpandSnippet()
+      if g:ulti_expand_res == 0
+          if pumvisible()
+              return "\<C-n>"
+          else
+              call UltiSnips#JumpForwards()
+              if g:ulti_jump_forwards_res == 0
+                 return "\<TAB>"
+              endif
+          endif
+      endif
+      return ""
+  endfunction
+  
+  au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+  
+  " Expand snippet or return
+  let g:ulti_expand_res = 0
+  function! Ulti_ExpandOrEnter()
+      call UltiSnips#ExpandSnippet()
+      if g:ulti_expand_res
+          return ''
+      else
+          return "\<return>"
+  endfunction
+  
+  " Set <space> as primary trigger
+  inoremap <return> <C-R>=Ulti_ExpandOrEnter()<CR>
+"}
+
+" gocode {
+set completeopt-=preview
+set completeopt+=longest
+"}
+
+" a.vim {
+nnoremap <leader>a :A "switches to the header file corresponding to the current file being edited (or vise versa)
+nnoremap <leader>as :AS "splits and switches
+nnoremap <leader>av :AV "vertical splits and switches
+nnoremap <leader>at :AT "new tab and switches
+nnoremap <leader>an :AN "cycles through matches
+nnoremap <leader>ih :IH "switches to file under cursor
+nnoremap <leader>ihs :IHS "splits and switches
+nnoremap <leader>ihv :IHV "vertical splits and switches
+nnoremap <leader>iht :IHT "new tab and switches
+nnoremap <leader>ihn :IHN "cycles through matches
+"<Leader>is switches to the alternate file of file under cursor (e.g. on  <foo.h> switches to foo.cpp)
+"}
+
 "cscope{
 
     """"""""""""" Standard cscope/vim boilerplate
@@ -148,29 +249,45 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
     " if you want the reverse search order.
     set csto=0
 
-"    " add any exiting csope database from above directory
-"    let db = findfile("cscope.out", ".;")
-"    if (!empty(db))
-"        let path = strpart(db, 0, match(db, "/cscope.out$"))
-"        set nocscopeverbose " suppress 'duplicate connection' error
-"        exe "cs add " . db . " " . path
-"        set cscopeverbose
-"    endif
+    " " add any exiting csope database from above directory
+    " let db = findfile("cscope.out", ".;")
+    " if (!empty(db))
+    "     let path = strpart(db, 0, match(db, "/cscope.out$"))
+    "     set nocscopeverbose " suppress 'duplicate connection' error
+    "     exe "cs add " . db . " " . path
+    "     set cscopeverbose
+    " endif
 
-"    " add any cscope database in current directory
-"    if filereadable("cscope.out")
-"        cs add cscope.out
-"    " else add the database pointed to by environment variable
-"    elseif $CSCOPE_DB != ""
-"        cs add $CSCOPE_DB
-"    endif
+    " " add any cscope database in current directory
+    " if filereadable("cscope.out")
+    "     cs add cscope.out
+    " " else add the database pointed to by environment variable
+    " elseif $CSCOPE_DB != ""
+    "     cs add $CSCOPE_DB
+    " endif
 
     " show msg when any other cscope db added
     "set cscopeverbose
 
-   " add user defined cscope db
-    "cs add /home/acayf/Documents/taobao/Nginx/nginx-1.4.1/src/cscope.out /home/acayf/Documents/taobao/Nginx/nginx-1.4.1/src/
-
+    "add user defined cscope db
+    "cs add ~/opt/arm-2009q1/cscope.out ~/opt/arm-2009q1/
+    "cs add ~/ti-dvsdk_dm365-evm_4_02_00_06/dmai_2_20_00_15/cscope.out ~/ti-dvsdk_dm365-evm_4_02_00_06/dmai_2_20_00_15/
+    "cs add ~/ti-dvsdk_dm365-evm_4_02_00_06/dvsdk-demos_4_02_00_01/cscope.out ~/ti-dvsdk_dm365-evm_4_02_00_06/dvsdk-demos_4_02_00_01/
+    "cs add ~/ti-dvsdk_dm365-evm_4_02_00_06/psp/linux-2.6.32.17-psp03.01.01.39/cscope.out ~/ti-dvsdk_dm365-evm_4_02_00_06/psp/linux-2.6.32.17-psp03.01.01.39/
+    "cs add ~/workdir/dm365/mv_pro_5.0/cscope.out ~/workdir/dm365/mv_pro_5.0/
+    "cs add ~/workdir/lsp/ti-davinci/sjw/linux-2.6.18_pro500/cscope.out ~/workdir/lsp/ti-davinci/sjw/linux-2.6.18_pro500/
+    "cs add ~/workdir/dm365/dvsdk_2_10_01_18/dmai_1_21_00_10/cscope.out ~/workdir/dm365/dvsdk_2_10_01_18/dmai_1_21_00_10/
+    "cs add ~/workdir/dm365/dvsdk_2_10_01_18/dvsdk_demos_2_10_00_17/cscope.out ~/workdir/dm365/dvsdk_2_10_01_18/dvsdk_demos_2_10_00_17/
+    "cs add ~/dvsdk_2_10_01_18/dmai_1_21_00_10/cscope.out ~/dvsdk_2_10_01_18/dmai_1_21_00_10/
+    "cs add ~/dvsdk_2_10_01_18/dvsdk_demos_2_10_00_17/cscope.out ~/dvsdk_2_10_01_18/dvsdk_demos_2_10_00_17/
+    "cs add ~/workdir/lsp/ti-davinci/linux-2.6.18_pro500_plc/linux-2.6.18_pro500/cscope.out ~/workdir/lsp/ti-davinci/linux-2.6.18_pro500_plc/linux-2.6.18_pro500/
+    "cs add ~/workdir/dm365/dvsdk_2_10_01_18/qt/qt-everywhere-opensource-src-4.6.2/examples/cscope.out ~/workdir/dm365/dvsdk_2_10_01_18/qt/qt-everywhere-opensource-src-4.6.2/examples/
+    "cs add ~/workdir/dm365/dvsdk_2_10_01_18/qt/qt-everywhere-opensource-src-4.6.2/include/cscope.out ~/workdir/dm365/dvsdk_2_10_01_18/qt/qt-everywhere-opensource-src-4.6.2/include/
+    " cs add /home/acayf/Documents/taobao/Nginx/nginx-1.4.1/src/cscope.out /home/acayf/Documents/taobao/Nginx/nginx-1.4.1/src/
+    " cs add /home/acayf/Documents/test/linux-2.6.18_pro500/cscope.out /home/acayf/Documents/test/linux-2.6.18_pro500/
+    " cs add /home/acayf/Documents/DM365/backup/encode/cscope.out /home/acayf/Documents/DM365/backup/encode/
+    " cs add /home/acayf/Documents/DM365/backup/dmai_1_21_00_10/packages/ti/sdo/dmai/cscope.out /home/acayf/Documents/DM365/backup/dmai_1_21_00_10/packages/ti/sdo/dmai/
+    " cs add /home/acayf/OpenSource_Procjects/muduo/muduo/cscope.out /home/acayf/OpenSource_Procjects/muduo/muduo/
 
     """"""""""""" My cscope/vim key mappings
     "
